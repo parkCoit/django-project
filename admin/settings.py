@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 
+import movie.cinemas.apps
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -37,6 +39,15 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    # "hello.apps.HelloConfig",
+    "users.users.apps.UsersConfig",
+    # "movie.muser.apps.MuserConfig",
+    # "movie.cinemas.apps.CinemasConfig",
+    # "movie.movies.apps.MoviesConfig",
+    # "movie.showtimes.apps.ShowtimesConfig",
+    # "shops.suser.apps.ShopConfig",
+    # "blog.buser.apps.BuserConfig",
+
 ]
 
 MIDDLEWARE = [
@@ -76,10 +87,10 @@ WSGI_APPLICATION = "admin.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
-        "NAME": BASE_DIR / "mydb",
+        "NAME": "mydb",
         "USER" : "root",
         "PASSWORD": "root",
-        "HOST": "mysql-container",
+        "HOST": "localhost",
         "PORT": "3306"
     }
 }
@@ -125,3 +136,7 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+
+
+
