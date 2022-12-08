@@ -39,18 +39,21 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    # "hello.apps.HelloConfig",
-    "users.users.apps.UsersConfig",
-    # "movie.muser.apps.MuserConfig",
-    # "movie.cinemas.apps.CinemasConfig",
-    # "movie.movies.apps.MoviesConfig",
-    # "movie.showtimes.apps.ShowtimesConfig",
-    # "shops.suser.apps.ShopConfig",
-    # "blog.buser.apps.BuserConfig",
+    "blog",
+    "movie",
+    "shop",
+    "rest_framework",
 
 ]
 
+# CORS 관련 추가
+CORS_ORIGIN_WHITELIST = ['http://192.168.0.20:3000',
+                         'http://localhost:3000']
+CORS_ALLOW_CREDNTIALS = True
+
+
 MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
