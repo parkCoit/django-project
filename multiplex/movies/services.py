@@ -243,6 +243,23 @@ class DcGan(object):
             # Save Losses for plotting later
             G_losses.append(errG.item())
             D_losses.append(errD.item())
+            # Grab a batch of real images from the dataloader
+            real_batch = next(iter(self.dataloader))
+
+            # Plot the real images
+            plt.figure(figsize=(15, 15))
+            plt.subplot(1, 2, 1)
+            plt.axis("off")
+            plt.title("Real Images")
+            plt.imshow(np.transpose(vutils.make_grid(real_batch[0].to(device)[:64], padding=5, normalize=True).cpu(),
+                                    (1, 2, 0)))
+
+            # Plot the fake images from the last epoch
+            plt.subplot(1, 2, 2)
+            plt.axis("off")
+            plt.title("Fake Images")
+            plt.imshow(np.transpose(img_list[-1], (1, 2, 0)))
+            plt.show()
 
     def MyDlibe(self):
         MyDlib().hook()
@@ -416,15 +433,18 @@ gc_menu = {
     "2": lambda t: t.MyDlibe(),
     "3": lambda t: t.print_netG(),
     "4": lambda t: t.print_netD(),
-    "5": lambda t: t.fake_images()
+    "5": lambda t: t.generate_fake_faces()
 
 }
 
 if __name__ == '__main__':
     t = DcGan()
-    menus = ['종료',
-             '/mplex/movies/fake-face' # 1. Loadin CelebA Dataset
-            ,'/mplex/movies/find-images' #2. Blow up Face By Dlib
+    menus = ['종료'
+            , '/mplex/movies/fake-face' # 1. Loadin CelebA Dataset
+            , '/mplex/movies/find-images' #2. Blow up Face By Dlib
+            , '/mplex/movies/netG'
+            , '/mplex/movies/netD'
+            , '/mplex/movies/fake-images'
             ]
     while True:
         [print(f"{i}. {j}") for i, j in enumerate(menus)]

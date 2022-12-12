@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     "multiplex",
     "shop",
     "rest_framework",
+    "corsheaders",
 
 ]
 
