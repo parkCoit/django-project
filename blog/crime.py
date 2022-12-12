@@ -109,7 +109,7 @@ class Crime:
         print(f" 서울시내 경찰서는 총 {len(station_names)}개 이다")
         [print(f"{str(i)}") for i in station_names]
 
-        gmaps = (lambda x: googlemaps.Client(key=x))("AIzaSyAaD1o_2faFQ_D8aOHBGBOhvFOuuH7iE88")
+        gmaps = (lambda x: googlemaps.Client(key=x))("")
         print(gmaps.geocode("서울중부경찰서", language='ko'))
         print(" ### API에서 주소추출 시작 ### ")
         station_addrs = []
