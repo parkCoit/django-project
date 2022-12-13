@@ -25,7 +25,7 @@ Data columns (total 12 columns):
  8   avg_glucose_level  5110 non-null   float64
  9   bmi                4909 non-null   float64
  10  smoking_status     5110 non-null   object 
- 11  stroke             5110 non-null   int64  
+ 11  strokes             5110 non-null   int64  
 dtypes: float64(3), int64(4), object(5)
 memory usage: 479.2+ KB
 None

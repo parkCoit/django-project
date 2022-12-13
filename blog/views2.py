@@ -7,7 +7,7 @@ from blog.stroke import Stroke
 
 @api_view(['GET'])
 @parser_classes([JSONParser])
-def stroke(request):
+def stroke_get(request):
     Stroke().hook()
     print(f'Enter Stroke with {request}')
     return JsonResponse({'Response Test' : 'SUCCESS'})

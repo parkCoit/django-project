@@ -24,7 +24,7 @@ stroke_meta = {
     'avg_glucose_level':'평균혈당',
     'bmi':'체질량지수',
     'smoking_status':'흡연여부',
-    'stroke':'뇌졸중'
+    'strokes':'뇌졸중'
 }
 
 '''
@@ -44,7 +44,7 @@ Data columns (total 12 columns):
  8   avg_glucose_level  5110 non-null   float64
  9   bmi                4909 non-null   float64
  10  smoking_status     5110 non-null   object 
- 11  stroke             5110 non-null   int64  
+ 11  strokes             5110 non-null   int64  
 dtypes: float64(3), int64(4), object(5)
 memory usage: 479.2+ KB
 None
@@ -52,8 +52,8 @@ None
 
 class Stroke:
 
-    data_path = f"./data/dam/stroke"
-    save = f"./save/dam/stroke"
+    data_path = f"C:/Users/bitcamp/PycharmProjects/djangoProject/blog/data/dam/stroke"
+    save = f"C:/Users/bitcamp/PycharmProjects/djangoProject/blog/save/dam/stroke"
 
     def __init__(self):
         self.stroke = pd.read_csv(f'{self.data_path}/healthcare-dataset-stroke-data.csv')
@@ -105,7 +105,7 @@ class Stroke:
     '''
     3.타깃변수(=종속변수 dependent, Y값) 설정
     입력변수(=설명변수, 확률변수, X값)
-    타깃변수명: stroke (=뇌졸중)
+    타깃변수명: strokes (=뇌졸중)
     타깃변수값: 과거에 한 번이라도 뇌졸중이 발병했으면 1, 아니면 0
     인터벌 = ['나이','평균혈당','체질량지수']
     '''
@@ -149,7 +149,7 @@ class Stroke:
         self.stroke = t
         self.spec()
         print(" ### 프리프로세스 종료 ### ")
-        self.stroke.to_csv(f"{self.save}/stroke.csv", index=0)
+        self.stroke.to_csv(f"{self.save}/strokes.csv", index=0)
 
     def ordinal(self): # 해당 컬럼이 없음
         pass
@@ -159,7 +159,7 @@ class Stroke:
     target 과 data 에 분리하여 저장한다.
     '''
     def set_target(self):
-        df = pd.read_csv(f'{self.save}/stroke.csv')
+        df = pd.read_csv(f'{self.save}/strokes.csv')
         self.data = df.drop(['뇌졸중'], axis=1)
         self.data = self.data.drop(['아이디'], axis=1)
         self.target = df['뇌졸중']
@@ -218,6 +218,7 @@ class Stroke:
             [ax.annotate("%.3f" % p.get_width(), (p.get_x() + p.get_width(), p.get_y()+1),
                          xytext=(5,10), textcoords='offset points') for p in ax.patches]
             plt.show()
+
 
 
 
