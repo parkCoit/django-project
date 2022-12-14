@@ -135,7 +135,7 @@ class Crime:
         crime.loc[crime['관서명'] == '방배서', ['구별']] = '서초구'
         crime.loc[crime['관서명'] == '수서서', ['구별']] = '강남구'
         crime.to_pickle('./save/police_pos.pkl')
-        print(pd.read_pickle('../../ml/save/police_pos.pkl'))
+        print(pd.read_pickle('../../ml2/save/police_pos.pkl'))
 
     def save_cctv_pop(self): # 3
         cctv = self.cctv

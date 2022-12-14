@@ -1,7 +1,7 @@
-
+import numpy as np
 from keras.saving.save import load_model
+from sklearn import datasets
 from tensorboard.compat import tf
-from tensorflow.python.tpu import datasets
 
 """
 Iris Species
@@ -14,16 +14,20 @@ Classify iris plants into three species in this classic dataset
 
 class IrisService(object):
     def __init__(self):
-        self.model = load_model('./save/iris_model.h5')
-        self.graph = tf.get_default_graph()
-        self.target_names = datasets.load_iris().target_names
+        global model, graph, target_names
+        model = load_model('./iris/save/iris_model.h5')
+        target_names = datasets.load_iris().target_names
 
     def hook(self):
-        self.service_model()
+        ls = [5,5,5,5]
+        self.service_model(ls)
 
 
-    def service_model(self):
-        pass
+    def service_model(self, features):  # features = []
+        features = np.reshape(features, (1, 4))
+        Y_prob = model.predict(features, verbose=0)
+        predicted = Y_prob.argmax(axis=-1)
+        return predicted[0]
 
 
 iris_menu = ["Exit", #0

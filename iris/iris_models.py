@@ -22,7 +22,7 @@ class IrisModel(object):
 
     def hook(self):
         self.spec()
-        # self.create_model()
+        self.create_model()
 
     def spec(self):
         print(f'{self.iris.feature_names}')
@@ -43,7 +43,7 @@ class IrisModel(object):
         model.fit(X, Y_1hot, epochs=300, batch_size=10)
         print('Model Training is completed')
 
-        file_name = './save/iris_model.h5'
+        file_name = 'save/iris_model.h5'
         model.save(file_name)
         print(f'Model Saved in {file_name}')
 
