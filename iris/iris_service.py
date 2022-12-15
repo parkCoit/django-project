@@ -15,7 +15,7 @@ Classify iris plants into three species in this classic dataset
 class IrisService(object):
     def __init__(self):
         global model, graph, target_names
-        model = load_model('./iris/save/iris_model.h5')
+        model = load_model('./save/iris_model.h5')
         target_names = datasets.load_iris().target_names
 
     def hook(self):
@@ -25,8 +25,11 @@ class IrisService(object):
 
     def service_model(self, features):  # features = []
         features = np.reshape(features, (1, 4))
+        print(features)
         Y_prob = model.predict(features, verbose=0)
+        print(Y_prob)
         predicted = Y_prob.argmax(axis=-1)
+        print(predicted)
         return predicted[0]
 
 
